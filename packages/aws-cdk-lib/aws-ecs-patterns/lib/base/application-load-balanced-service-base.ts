@@ -3,7 +3,7 @@ import { Certificate, CertificateValidation, ICertificate } from '../../../aws-c
 import { IVpc } from '../../../aws-ec2';
 import {
   AwsLogDriver, BaseService, CloudMapOptions, Cluster, ContainerImage, DeploymentController, DeploymentCircuitBreaker,
-  ICluster, LogDriver, PropagatedTagSource, Secret, CapacityProviderStrategy,
+  ICluster, LogDriver, PropagatedTagSource, Secret, CapacityProviderStrategy, ServiceConnectProps,
 } from '../../../aws-ecs';
 import {
   ApplicationListener, ApplicationLoadBalancer, ApplicationProtocol, ApplicationProtocolVersion, ApplicationTargetGroup,
@@ -37,6 +37,12 @@ export enum ApplicationLoadBalancedServiceRecordType {
  * The properties for the base ApplicationLoadBalancedEc2Service or ApplicationLoadBalancedFargateService service.
  */
 export interface ApplicationLoadBalancedServiceBaseProps {
+  /**
+   * 
+   * Service Connect Props
+   */
+  readonly serviceConnectConfiguration?: ServiceConnectProps;
+
   /**
    * The name of the cluster that hosts the service.
    *
